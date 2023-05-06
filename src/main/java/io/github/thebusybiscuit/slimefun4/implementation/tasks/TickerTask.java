@@ -91,12 +91,14 @@ public class TickerTask implements Runnable {
             Slimefun.getProfiler().start();
             Set<BlockTicker> tickers = new HashSet<>();
 
-            // Remove any deleted blocks
-            Iterator<Map.Entry<Location, Boolean>> removals = deletionQueue.entrySet().iterator();
-            while (removals.hasNext()) {
-                Map.Entry<Location, Boolean> entry = removals.next();
-                BlockStorage.deleteLocationInfoUnsafely(entry.getKey(), entry.getValue());
-                removals.remove();
+            synchronized (this.deletionQueue) {
+                // Remove any deleted blocks
+                Iterator<Map.Entry<Location, Boolean>> removals = deletionQueue.entrySet().iterator();
+                while (removals.hasNext()) {
+                    Map.Entry<Location, Boolean> entry = removals.next();
+                    BlockStorage.deleteLocationInfoUnsafely(entry.getKey(), entry.getValue());
+                    removals.remove();
+                }
             }
 
             // Fixes #2576 - Remove any deleted instances of BlockStorage
@@ -227,9 +229,14 @@ public class TickerTask implements Runnable {
     }
 
     @ParametersAreNonnullByDefault
-    public void queueDelete(Location l, boolean destroy) {
+    public synchronized boolean dequeueDelete(Location l) {
         Validate.notNull(l, "Location must not be null!");
+        return deletionQueue.remove(l) != null;
+    }
 
+    @ParametersAreNonnullByDefault
+    public synchronized void queueDelete(Location l, boolean destroy) {
+        Validate.notNull(l, "Location must not be null!");
         deletionQueue.put(l, destroy);
     }
 
@@ -263,7 +270,7 @@ public class TickerTask implements Runnable {
     public boolean isDeletedSoon(@Nonnull Location l) {
         Validate.notNull(l, "Null is not a valid Location!");
 
-        return deletionQueue.containsKey(l);
+        return deletionQueue.getOrDefault(l, false);
     }
 
     /**

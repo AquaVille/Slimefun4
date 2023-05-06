@@ -549,11 +549,16 @@ public class BlockStorage {
 
     private static void setBlockInfo(Location l, Config cfg, boolean updateTicker) {
         BlockStorage storage = getStorage(l.getWorld());
-
         if (storage == null) {
             Slimefun.logger().warning("Could not set Block info for non-registered World '" + l.getWorld().getName() + "'. Is some plugin trying to store data in a fake world?");
             return;
         }
+
+        // Dequeue deletion of block at this position, we can safely just swap block info...
+        // This mitigates an issue where game thread calls block place
+        // right after block break, abusing the random order nature of multiple threads
+        // accessing the same data at different intervals, and yet depending on the access order.
+        Slimefun.getTickerTask().dequeueDelete(l);
 
         storage.storage.put(l, cfg);
         String id = cfg.getString("id");
