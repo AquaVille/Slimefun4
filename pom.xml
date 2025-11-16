@@ -9,7 +9,7 @@
 
     <!-- Our default version will be UNOFFICIAL, this will prevent auto updates -->
     <!-- from overriding our local test file -->
-    <version>5.0.3-UNOFFICIAL</version>
+    <version>5.0.0-MODIFIED</version>
     <inceptionYear>2013</inceptionYear>
     <packaging>jar</packaging>
 
@@ -329,12 +329,14 @@
         </dependency>
 
         <!-- Shaded packages -->
+        <!-- Temporary fix for Dough skin issue (November 2025) : START -->
         <dependency>
-            <groupId>com.github.Slimefun.dough</groupId>
-            <artifactId>dough-api</artifactId>
-            <version>cb22e71335</version>
-            <scope>compile</scope>
+            <groupId>com.github.StarWishsama</groupId>
+            <artifactId>dough</artifactId>
+            <version>0a06f6fcaef863c97e3c036ef2406e15691bae16</version> <!-- or a tag or commit hash -->
         </dependency>
+        <!-- Temporary fix for Dough skin issue (November 2025) : END -->
+
         <dependency>
             <groupId>io.papermc</groupId>
             <artifactId>paperlib</artifactId>
