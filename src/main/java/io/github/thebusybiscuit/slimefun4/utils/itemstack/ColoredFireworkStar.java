@@ -1,11 +1,10 @@
 package io.github.thebusybiscuit.slimefun4.utils.itemstack;
 
 import io.github.bakedlibs.dough.items.CustomItemStack;
-import org.bukkit.ChatColor;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
+import io.papermc.paper.datacomponent.DataComponentTypes;
+import io.papermc.paper.datacomponent.item.TooltipDisplay;
+import org.bukkit.*;
 import org.bukkit.FireworkEffect.Type;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkEffectMeta;
@@ -30,10 +29,19 @@ public class ColoredFireworkStar {
         FireworkEffectMeta meta = (FireworkEffectMeta) item.getItemMeta();
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
         meta.setLore(List.of(lore));
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setEffect(effect);
 
         item.setItemMeta(meta);
+        item.setData(
+                DataComponentTypes.TOOLTIP_DISPLAY,
+                TooltipDisplay.tooltipDisplay()
+                        .addHiddenComponents(
+                                DataComponentTypes.FIREWORK_EXPLOSION,
+                                DataComponentTypes.ATTRIBUTE_MODIFIERS
+                        )
+                        .build()
+        );
+
         return item;
     }
 

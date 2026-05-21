@@ -10,6 +10,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import io.papermc.paper.datacomponent.DataComponentType;
+import io.papermc.paper.datacomponent.DataComponentTypes;
+import io.papermc.paper.datacomponent.item.TooltipDisplay;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.ChatColor;
 import org.bukkit.Keyed;
@@ -82,10 +85,18 @@ public class ItemGroup implements Keyed {
         this.item = item;
         this.key = key;
 
-        ItemMeta meta = item.getItemMeta();
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        this.item.setItemMeta(meta);
+        this.item.setData(
+                DataComponentTypes.TOOLTIP_DISPLAY,
+                TooltipDisplay.tooltipDisplay()
+                        .addHiddenComponents(
+                                DataComponentTypes.FIREWORK_EXPLOSION,
+                                DataComponentTypes.ENCHANTMENTS,
+                                DataComponentTypes.ATTRIBUTE_MODIFIERS,
+                                DataComponentTypes.DYED_COLOR
+                        )
+                        .build()
+        );
+
         this.tier = tier;
     }
 
