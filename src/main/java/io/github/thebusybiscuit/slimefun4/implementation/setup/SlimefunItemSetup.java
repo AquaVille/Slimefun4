@@ -11,7 +11,6 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
@@ -2222,7 +2221,7 @@ public final class SlimefunItemSetup {
                 .register(plugin);
 
         new PortableGEOScanner(itemGroups.gps, SlimefunItems.PORTABLE_GEO_SCANNER, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {SlimefunItems.ELECTRO_MAGNET.item(), new ItemStack(Material.COMPASS), SlimefunItems.ELECTRO_MAGNET.item(), SlimefunItems.STEEL_INGOT.item(), SlimefunItems.GPS_MARKER_TOOL.item(), SlimefunItems.STEEL_INGOT.item(), SlimefunItems.SOLDER_INGOT.item(), SlimefunItems.ELECTRIC_MOTOR.item(), SlimefunItems.SOLDER_INGOT.item()})
+                new ItemStack[] {SlimefunItems.ELECTRO_MAGNET.item(), new ItemStack(Material.COMPASS), SlimefunItems.ELECTRO_MAGNET.item(), SlimefunItems.STEEL_INGOT.item(), SlimefunItems.GPS_GEO_SCANNER.item(), SlimefunItems.STEEL_INGOT.item(), SlimefunItems.SOLDER_INGOT.item(), SlimefunItems.ELECTRIC_MOTOR.item(), SlimefunItems.SOLDER_INGOT.item()})
                 .register(plugin);
 
         new OilPump(itemGroups.gps, SlimefunItems.OIL_PUMP, RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -2383,7 +2382,7 @@ public final class SlimefunItemSetup {
                 .register(plugin);
 
         new ExpCollector(itemGroups.electricity, SlimefunItems.EXP_COLLECTOR, RecipeType.ENHANCED_CRAFTING_TABLE,
-        new ItemStack[] {null, SlimefunItems.BLISTERING_INGOT_3.item(), null, SlimefunItems.WITHER_PROOF_OBSIDIAN.item(), SlimefunItems.AUTO_ENCHANTER.item(), SlimefunItems.WITHER_PROOF_OBSIDIAN.item(), SlimefunItems.ALUMINUM_BRONZE_INGOT.item(), SlimefunItems.ELECTRIC_MOTOR.item(), SlimefunItems.ALUMINUM_BRONZE_INGOT.item()})
+        new ItemStack[] {null, SlimefunItems.BLISTERING_INGOT_3.item(), null, SlimefunItems.WITHER_PROOF_OBSIDIAN.item(), SlimefunItems.PROGRAMMABLE_ANDROID_3.item(), SlimefunItems.WITHER_PROOF_OBSIDIAN.item(), SlimefunItems.ALUMINUM_BRONZE_INGOT.item(), SlimefunItems.ELECTRIC_MOTOR.item(), SlimefunItems.ALUMINUM_BRONZE_INGOT.item()})
         .setEnergyConsumption(10)
         .setCapacity(1024)
         .register(plugin);
@@ -2436,7 +2435,7 @@ public final class SlimefunItemSetup {
                 .register(plugin);
 
         new CropGrowthAccelerator(itemGroups.electricity, SlimefunItems.CROP_GROWTH_ACCELERATOR, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {null, SlimefunItems.BLISTERING_INGOT_3.item(), null, SlimefunItems.ELECTRIC_MOTOR.item(), SlimefunItems.PROGRAMMABLE_ANDROID_FARMER.item(), SlimefunItems.ELECTRIC_MOTOR.item(), SlimefunItems.ELECTRO_MAGNET.item(), SlimefunItems.ANIMAL_GROWTH_ACCELERATOR.item(), SlimefunItems.ELECTRO_MAGNET.item()}) {
+                new ItemStack[] {null, SlimefunItems.BLISTERING_INGOT_3.item(), null, SlimefunItems.ELECTRIC_MOTOR.item(), SlimefunItems.PROGRAMMABLE_ANDROID_3.item(), SlimefunItems.ELECTRIC_MOTOR.item(), SlimefunItems.ELECTRO_MAGNET.item(), SlimefunItems.ANIMAL_GROWTH_ACCELERATOR.item(), SlimefunItems.ELECTRO_MAGNET.item()}) {
 
             @Override
             public int getEnergyConsumption() {
@@ -2584,7 +2583,7 @@ public final class SlimefunItemSetup {
                 .register(plugin);
 
         new TrashCan(itemGroups.cargo, SlimefunItems.TRASH_CAN, RecipeType.ENHANCED_CRAFTING_TABLE,
-                new ItemStack[] {null, SlimefunItems.PORTABLE_DUSTBIN.item(), null, SlimefunItems.LEAD_INGOT.item(), SlimefunItems.CARGO_MOTOR.item(), SlimefunItems.LEAD_INGOT.item(), SlimefunItems.ALUMINUM_INGOT.item(), SlimefunItems.LEAD_INGOT.item(), SlimefunItems.ALUMINUM_INGOT.item()})
+                new ItemStack[] {null, SlimefunItems.PROGRAMMABLE_ANDROID.item(), null, SlimefunItems.LEAD_INGOT.item(), SlimefunItems.CARGO_MOTOR.item(), SlimefunItems.LEAD_INGOT.item(), SlimefunItems.ALUMINUM_INGOT.item(), SlimefunItems.LEAD_INGOT.item(), SlimefunItems.ALUMINUM_INGOT.item()})
                 .register(plugin);
 
         new CarbonPress(itemGroups.electricity, SlimefunItems.CARBON_PRESS, RecipeType.ENHANCED_CRAFTING_TABLE,
