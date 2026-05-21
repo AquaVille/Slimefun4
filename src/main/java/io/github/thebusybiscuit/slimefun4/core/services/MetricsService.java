@@ -131,7 +131,7 @@ public class MetricsService {
                 return;
             }
 
-            // Finally, we're good to start this.
+            // Finally, we're good to start this.;
             Method start = metricsClass.getDeclaredMethod("start");
             String version = metricsClass.getPackage().getImplementationVersion();
 

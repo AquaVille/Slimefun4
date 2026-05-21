@@ -44,7 +44,6 @@ import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.exceptions.PrematureCodeException;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.utils.HeadTexture;
-import io.github.thebusybiscuit.slimefun4.utils.compatibility.VersionedItemFlag;
 
 /**
  * The {@link SlimefunItemStack} functions as the base for any
@@ -172,7 +171,7 @@ public class SlimefunItemStack {
                 potionMeta.addCustomEffect(effect, true);
 
                 if (effect.getType().equals(PotionEffectType.SATURATION)) {
-                    im.addItemFlags(VersionedItemFlag.HIDE_ADDITIONAL_TOOLTIP);
+                    im.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
                 }
             }
         });

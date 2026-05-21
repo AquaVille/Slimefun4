@@ -6,12 +6,7 @@ import java.util.logging.Level;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Effect;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
@@ -29,7 +24,6 @@ import io.github.bakedlibs.dough.protection.Interaction;
 import io.github.bakedlibs.dough.scheduling.TaskQueue;
 import io.github.thebusybiscuit.slimefun4.core.services.sounds.SoundEffect;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import io.github.thebusybiscuit.slimefun4.utils.compatibility.VersionedParticle;
 import io.papermc.lib.PaperLib;
 
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
@@ -341,7 +335,7 @@ class MiningTask implements Runnable {
         try {
             // Smoke Particles around the Chest for dramatic effect
             Location particleLoc = chest.getLocation().clone().add(0, -1, 0);
-            block.getWorld().spawnParticle(VersionedParticle.SMOKE, particleLoc, 20, 0.7, 0.7, 0.7, 0);
+            block.getWorld().spawnParticle(Particle.SMOKE, particleLoc, 20, 0.7, 0.7, 0.7, 0);
 
             if (block.getType() == Material.MOVING_PISTON) {
                 // Yeah it isn't really cool when this happens
