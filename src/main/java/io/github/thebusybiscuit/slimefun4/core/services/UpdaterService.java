@@ -135,22 +135,6 @@ public class UpdaterService {
     }
 
     /**
-     * This will start the {@link UpdaterService} and check for updates.
-     * If it can find an update it will automatically be installed.
-     */
-    public void start() {
-        if (updater != null) {
-            updater.start();
-        } else {
-            printBorder();
-            plugin.getLogger().log(Level.WARNING, "It looks like you are using an unofficially modified build of Slimefun!");
-            plugin.getLogger().log(Level.WARNING, "Auto-Updates have been disabled, this build is not considered safe.");
-            plugin.getLogger().log(Level.WARNING, "Do not report bugs encountered in this Version of Slimefun to any official sources.");
-            printBorder();
-        }
-    }
-
-    /**
      * This returns whether the {@link PluginUpdater} is enabled or not.
      * This includes the {@link Config} setting but also whether or not we are running an
      * official or unofficial build.
@@ -159,26 +143,6 @@ public class UpdaterService {
      */
     public boolean isEnabled() {
         return Slimefun.getCfg().getBoolean("options.auto-update") && updater != null;
-    }
-
-    /**
-     * This method is called when the {@link UpdaterService} was disabled.
-     */
-    public void disable() {
-        printBorder();
-        plugin.getLogger().log(Level.WARNING, "It looks like you have disabled auto-updates for Slimefun!");
-        plugin.getLogger().log(Level.WARNING, "Auto-Updates keep your server safe, performant and bug-free.");
-        plugin.getLogger().log(Level.WARNING, "We respect your decision.");
-
-        if (branch != SlimefunBranch.STABLE) {
-            plugin.getLogger().log(Level.WARNING, "If you are just scared of Slimefun breaking, then please consider using a \"stable\" build instead of disabling auto-updates.");
-        }
-
-        printBorder();
-    }
-
-    private void printBorder() {
-        plugin.getLogger().log(Level.WARNING, "#######################################################");
     }
 
 }

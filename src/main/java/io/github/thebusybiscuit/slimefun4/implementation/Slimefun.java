@@ -317,14 +317,6 @@ public class Slimefun extends JavaPlugin implements SlimefunAddon {
         new Thread(metricsService::start, "Slimefun Metrics").start();
         analyticsService.start();
 
-        // Starting the Auto-Updater
-        if (config.getBoolean("options.auto-update")) {
-            logger.log(Level.INFO, "Starting Auto-Updater...");
-            updaterService.start();
-        } else {
-            updaterService.disable();
-        }
-
         // Registering all GEO Resources
         logger.log(Level.INFO, "Loading GEO-Resources...");
         GEOResourcesSetup.setup();
@@ -523,9 +515,19 @@ public class Slimefun extends JavaPlugin implements SlimefunAddon {
                 return true;
             }
 
+
             // Now check the actual Version of Minecraft
             int version = PaperLib.getMinecraftVersion();
             int patchVersion = PaperLib.getMinecraftPatchVersion();
+
+            if (version == 0) {
+                java.util.regex.Matcher matcher = java.util.regex.Pattern.compile("MC: (\\d+)\\.(\\d+)").matcher(Bukkit.getVersion());
+                if (matcher.find()) {
+                    version = Integer.parseInt(matcher.group(1));
+                    patchVersion = Integer.parseInt(matcher.group(2));
+                }
+            }
+
 
             if (version > 0) {
                 // Check all supported versions of Minecraft

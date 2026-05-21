@@ -148,29 +148,17 @@ public class WoodcutterAndroid extends ProgrammableAndroid {
                 saplingType = Material.WARPED_FUNGUS;
                 soilRequirement = SlimefunTag.FUNGUS_SOIL::isTagged;
             }
+            case MANGROVE_LOG,
+                 STRIPPED_MANGROVE_LOG -> {
+                saplingType = Material.MANGROVE_PROPAGULE;
+                soilRequirement = SlimefunTag.MANGROVE_BASE_BLOCKS::isTagged;
+            }
+            case CHERRY_LOG,
+                 STRIPPED_CHERRY_LOG -> {
+                saplingType = Material.CHERRY_SAPLING;
+                soilRequirement = SlimefunTag.DIRT_VARIANTS::isTagged;
+            }
             default -> {}
-        }
-
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_19)) {
-            switch (logType) {
-                case MANGROVE_LOG,
-                    STRIPPED_MANGROVE_LOG -> {
-                    saplingType = Material.MANGROVE_PROPAGULE;
-                    soilRequirement = SlimefunTag.MANGROVE_BASE_BLOCKS::isTagged;
-                }
-                default -> {}
-            }
-        }
-
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_20)) {
-            switch (logType) {
-                case CHERRY_LOG,
-                    STRIPPED_CHERRY_LOG -> {
-                    saplingType = Material.CHERRY_SAPLING;
-                    soilRequirement = SlimefunTag.DIRT_VARIANTS::isTagged;
-                }
-                default -> {}
-            }
         }
 
         if (saplingType != null && soilRequirement != null) {

@@ -211,12 +211,11 @@ public class IndustrialMiner extends MultiBlockMachine {
      * @return Whether this {@link IndustrialMiner} is capable of mining this {@link Block}
      */
     public boolean canMine(@Nonnull Block block) {
-        MinecraftVersion version = Slimefun.getMinecraftVersion();
         Material type = block.getType();
 
         if (type == Material.ANCIENT_DEBRIS) {
             return canMineAncientDebris.getValue() && !BlockStorage.hasBlockInfo(block);
-        } else if (version.isAtLeast(MinecraftVersion.MINECRAFT_1_17) && SlimefunTag.DEEPSLATE_ORES.isTagged(type)) {
+        } else if (SlimefunTag.DEEPSLATE_ORES.isTagged(type)) {
             return canMineDeepslateOres.getValue() && !BlockStorage.hasBlockInfo(block);
         } else {
             return SlimefunTag.INDUSTRIAL_MINER_ORES.isTagged(type) && !BlockStorage.hasBlockInfo(block);

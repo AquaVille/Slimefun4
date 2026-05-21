@@ -3,9 +3,7 @@ package io.github.thebusybiscuit.slimefun4.implementation.resources;
 import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
 
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.geo.GEOMiner;
 import io.github.thebusybiscuit.slimefun4.implementation.items.geo.OilPump;
@@ -29,7 +27,7 @@ class OilResource extends AbstractResource {
 
     OilResource() {
         super("oil", "Oil", SlimefunItems.OIL_BUCKET.item(), 8, false);
-        biomes = getBiomeMap(this, "/biome-maps/oil_v1.18.json");
+        biomes = getBiomeMap(this, "/biome-maps/oil_v1.21.json");
     }
 
     @Override

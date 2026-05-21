@@ -22,7 +22,7 @@ class NetherIceResource extends AbstractResource {
 
     NetherIceResource() {
         super("nether_ice", "Nether Ice", SlimefunItems.NETHER_ICE.item(), 6, true);
-        biomes = getBiomeMap(this, "/biome-maps/nether_ice_v1.18.json");
+        biomes = getBiomeMap(this, "/biome-maps/nether_ice_v1.21.json");
     }
 
     @Override

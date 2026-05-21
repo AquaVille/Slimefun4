@@ -19,47 +19,16 @@ import io.papermc.lib.PaperLib;
  */
 public enum MinecraftVersion {
 
-    /**
-     * This constant represents Minecraft (Java Edition) Version 1.16
-     * (The "Nether Update")
-     */
-    MINECRAFT_1_16(16, "1.16.x"),
-
-    /**
-     * This constant represents Minecraft (Java Edition) Version 1.17
-     * (The "Caves and Cliffs: Part I" Update)
-     */
-    MINECRAFT_1_17(17, "1.17.x"),
-
-    /**
-     * This constant represents Minecraft (Java Edition) Version 1.18
-     * (The "Caves and Cliffs: Part II" Update)
-     */
-    MINECRAFT_1_18(18, "1.18.x"),
-
-    /**
-     * This constant represents Minecraft (Java Edition) Version 1.19
-     * ("The Wild Update")
-     */
-    MINECRAFT_1_19(19, "1.19.x"),
-
-    /**
-     * This constant represents Minecraft (Java Edition) Version 1.20
-     * ("The Trails &amp; Tales Update")
-     */
-    MINECRAFT_1_20(20, 0, 4, "1.20.x"),
-
-    /**
-     * This constant represents Minecraft (Java Edition) Version 1.20.5
-     * ("The Armored Paws Update")
-     */
-    MINECRAFT_1_20_5(20, 5, "1.20.5+"),
-
      /**
      * This constant represents Minecraft (Java Edition) Version 1.21
      * ("Tricky Trials")
      */
     MINECRAFT_1_21(21, 0, "1.21.x"),
+
+    /**
+     * This constant represents Minecraft (Java Edition) Version 1.26
+     */
+    MINECRAFT_1_26(26, "1.26.x"),
 
     /**
      * This constant represents an exceptional state in which we were unable

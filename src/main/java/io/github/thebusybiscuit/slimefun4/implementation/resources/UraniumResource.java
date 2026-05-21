@@ -3,9 +3,7 @@ package io.github.thebusybiscuit.slimefun4.implementation.resources;
 import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
 
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.utils.biomes.BiomeMap;
 
@@ -23,7 +21,7 @@ class UraniumResource extends AbstractResource {
 
     UraniumResource() {
         super("uranium", "Small Chunks of Uranium", SlimefunItems.SMALL_URANIUM.item(), 2, true);
-        biomes = getBiomeMap(this, "/biome-maps/uranium_v1.18.json");
+        biomes = getBiomeMap(this, "/biome-maps/uranium_v1.21.json");
     }
 
     @Override
