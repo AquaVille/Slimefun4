@@ -107,7 +107,6 @@ public class AnalyticsService {
         // If not enabled or not official build (e.g. local build) or a unit test, just ignore.
         if (
             !enabled
-            || !Slimefun.getUpdater().getBranch().isOfficial()
             || Slimefun.instance().isUnitTest()
         ) return;
 

@@ -607,16 +607,6 @@ public class SlimefunItem implements Placeable {
      *            The {@link Class} from which to start this operation.
      */
     private void checkForDeprecations(@Nullable Class<?> c) {
-        if (Slimefun.getUpdater().getBranch() == SlimefunBranch.DEVELOPMENT) {
-            /*
-             * This method is currently way too spammy with all the restructuring going on...
-             * Since DEV builds are anyway under "development", things may be relocated.
-             * So we fire these only for stable versions, since devs should update then, so
-             * it's the perfect moment to tell them to act.
-             */
-            return;
-        }
-
         /*
          * We do not wanna throw an Exception here since this could also mean that.
          * We have reached the end of the Class hierarchy

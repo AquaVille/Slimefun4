@@ -94,19 +94,8 @@ public final class PostSetup {
         sender.sendMessage(ChatColor.GREEN + "Successfully loaded " + total + " Items and " + Slimefun.getRegistry().getResearches().size() + " Researches");
         sender.sendMessage(ChatColor.GREEN + "( " + slimefunOnly + " Items from Slimefun, " + (total - slimefunOnly) + " Items from " + Slimefun.getInstalledAddons().size() + " Addons )");
         sender.sendMessage("");
-        sender.sendMessage(ChatColor.GREEN + "Slimefun is an Open-Source project that is kept alive by a large community.");
-        sender.sendMessage(ChatColor.GREEN + "Consider helping us maintain this project by contributing on GitHub!");
-
-        if (Slimefun.getUpdater().getBranch().isOfficial()) {
-            sender.sendMessage("");
-            sender.sendMessage(ChatColor.GREEN + " - Source Code:  https://github.com/Slimefun/Slimefun4");
-            sender.sendMessage(ChatColor.GREEN + " - Wiki:         https://github.com/Slimefun/Slimefun4/wiki");
-            sender.sendMessage(ChatColor.GREEN + " - Addons:       https://github.com/Slimefun/Slimefun4/wiki/Addons");
-            sender.sendMessage(ChatColor.GREEN + " - Bug Reports:  https://github.com/Slimefun/Slimefun4/issues");
-            sender.sendMessage(ChatColor.GREEN + " - Discord:      https://discord.gg/slimefun");
-        } else {
-            sender.sendMessage(ChatColor.GREEN + " - UNOFFICIALLY MODIFIED BUILD - NO OFFICIAL SUPPORT GIVEN");
-        }
+        sender.sendMessage(ChatColor.GREEN + "Slimefun is an Open-Source project that used to be maintained by community.");
+        sender.sendMessage(ChatColor.GREEN + "This build is specifically made for the AquaVille.sk Minecraft project.");
 
         sender.sendMessage("");
 

@@ -49,12 +49,10 @@ import io.github.thebusybiscuit.slimefun4.core.services.BlockDataService;
 import io.github.thebusybiscuit.slimefun4.core.services.CustomItemDataService;
 import io.github.thebusybiscuit.slimefun4.core.services.CustomTextureService;
 import io.github.thebusybiscuit.slimefun4.core.services.LocalizationService;
-import io.github.thebusybiscuit.slimefun4.core.services.MetricsService;
 import io.github.thebusybiscuit.slimefun4.core.services.MinecraftRecipeService;
 import io.github.thebusybiscuit.slimefun4.core.services.PerWorldSettingsService;
 import io.github.thebusybiscuit.slimefun4.core.services.PermissionsService;
 import io.github.thebusybiscuit.slimefun4.core.services.ThreadService;
-import io.github.thebusybiscuit.slimefun4.core.services.UpdaterService;
 import io.github.thebusybiscuit.slimefun4.core.services.github.GitHubService;
 import io.github.thebusybiscuit.slimefun4.core.services.holograms.HologramsService;
 import io.github.thebusybiscuit.slimefun4.core.services.profiler.SlimefunProfiler;
@@ -175,8 +173,6 @@ public class Slimefun extends JavaPlugin implements SlimefunAddon {
     private final BlockDataService blockDataService = new BlockDataService(this, "slimefun_block");
     private final CustomTextureService textureService = new CustomTextureService(new Config(this, "item-models.yml"));
     private final GitHubService gitHubService = new GitHubService("Slimefun/Slimefun4");
-    private final UpdaterService updaterService = new UpdaterService(this, getDescription().getVersion(), getFile());
-    private final MetricsService metricsService = new MetricsService(this);
     private final AutoSavingService autoSavingService = new AutoSavingService();
     private final BackupService backupService = new BackupService();
     private final PermissionsService permissionsService = new PermissionsService(this);
@@ -313,10 +309,6 @@ public class Slimefun extends JavaPlugin implements SlimefunAddon {
         playerStorage = new LegacyStorage();
         logger.log(Level.INFO, "Using legacy storage for player data");
 
-        // Setting up bStats and analytics
-        new Thread(metricsService::start, "Slimefun Metrics").start();
-        analyticsService.start();
-
         // Registering all GEO Resources
         logger.log(Level.INFO, "Loading GEO-Resources...");
         GEOResourcesSetup.setup();
@@ -444,9 +436,6 @@ public class Slimefun extends JavaPlugin implements SlimefunAddon {
         if (config.getBoolean("options.backup-data")) {
             backupService.run();
         }
-
-        // Close and unload any resources from our Metrics Service
-        metricsService.cleanUp();
 
         // Terminate our Plugin instance
         setInstance(null);
@@ -885,28 +874,6 @@ public class Slimefun extends JavaPlugin implements SlimefunAddon {
      */
     public static @Nonnull ProtectionManager getProtectionManager() {
         return getIntegrations().getProtectionManager();
-    }
-
-    /**
-     * This method returns the {@link UpdaterService} of Slimefun.
-     * It is used to handle automatic updates.
-     *
-     * @return The {@link UpdaterService} for Slimefun
-     */
-    public static @Nonnull UpdaterService getUpdater() {
-        validateInstance();
-        return instance.updaterService;
-    }
-
-    /**
-     * This method returns the {@link MetricsService} of Slimefun.
-     * It is used to handle sending metric information to bStats.
-     *
-     * @return The {@link MetricsService} for Slimefun
-     */
-    public static @Nonnull MetricsService getMetricsService() {
-        validateInstance();
-        return instance.metricsService;
     }
 
     /**

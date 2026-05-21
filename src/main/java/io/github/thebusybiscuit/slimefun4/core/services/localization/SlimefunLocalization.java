@@ -143,7 +143,7 @@ public abstract class SlimefunLocalization implements Keyed {
      */
     protected void loadEmbeddedLanguages() {
         for (LanguagePreset lang : LanguagePreset.values()) {
-            if (lang.isReadyForRelease() || Slimefun.getUpdater().getBranch() != SlimefunBranch.STABLE) {
+            if (lang.isReadyForRelease()) {
                 addLanguage(lang.getLanguageCode(), lang.getTexture());
             }
         }
