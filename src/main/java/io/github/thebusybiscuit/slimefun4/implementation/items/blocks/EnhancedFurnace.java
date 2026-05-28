@@ -27,9 +27,9 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
  * The {@link EnhancedFurnace} is an upgraded version of a {@link Furnace}.
  * It has a custom speed, efficiency and also a level of fortune.
  * All of these values are tweaked for every instance of this class.
- * 
+ *
  * It uses a {@link BlockTicker} to manipulate the {@link Furnace} into working faster.
- * 
+ *
  * @author TheBusyBiscuit
  *
  */
@@ -51,7 +51,7 @@ public class EnhancedFurnace extends SimpleSlimefunItem<BlockTicker> {
 
     /**
      * This returns the processing speed of this {@link EnhancedFurnace}.
-     * 
+     *
      * @return The processing speed
      */
     public int getProcessingSpeed() {
@@ -61,7 +61,7 @@ public class EnhancedFurnace extends SimpleSlimefunItem<BlockTicker> {
     /**
      * This returns the fuel efficiency of this {@link EnhancedFurnace}.
      * The fuel efficiency is a multiplier that is applied to any fuel burnt in this {@link EnhancedFurnace}.
-     * 
+     *
      * @return The fuel multiplier
      */
     public int getFuelEfficiency() {
@@ -89,11 +89,7 @@ public class EnhancedFurnace extends SimpleSlimefunItem<BlockTicker> {
                     // Check if the BlockState is a Furnace and cooking something
                     if (state instanceof Furnace furnace && furnace.getCookTime() > 0) {
                         setProgress(furnace);
-
-                        // Only update if necessary
-                        if (result.isSnapshot()) {
-                            state.update(true, false);
-                        }
+                        state.update(true, false);
                     }
                 }
             }

@@ -254,11 +254,7 @@ public abstract class AbstractAutoCrafter extends SlimefunItem implements Energy
                 // Store the value to persistent data storage
                 PersistentDataAPI.setString(skull, recipeStorageKey, recipe.toString());
             }
-
-            // Fixes #2899 - Update the BlockState if necessary
-            if (result.isSnapshot()) {
-                state.update(true, false);
-            }
+            state.update(true, false);
         }
     }
 
